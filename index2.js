@@ -17,19 +17,34 @@ create temporary arrays).
 -----------------------------------------------------------------------------------------------------------------------------
 */
 const scrambledArray = ["student", "of", true, 123, "am", "a", "GIAIC", "I"];
-// remove non string value which is not necessary here
+//1) remove non string value which is not necessary here
 scrambledArray.splice(2, 2);
-// Rearrange the array in desire order.
-//  1) its a mannual aproach to rearrange the array by using indices method
-// let rearrangedArray = [
-//   scrambledArray[5],scrambledArray[2],scrambledArray[3],
-//    scrambledArray[0],scrambledArray[1],scrambledArray[4]
-//      ]      
-// 2) i use destructure method here above method is also ok but for larger array its become deficult to work with indices        
-let [firstWord, secondWord, thirdWord, fourthWord, fifthWord, sixthWord] = scrambledArray;
-let rearrangedArray = [sixthWord, thirdWord, fourthWord, firstWord, secondWord, fifthWord];
-// Combine elements back into a single string
+//2) Rearrange the array in desire order using method.
+let rearrangedArray = [];
+rearrangedArray.push(scrambledArray[5], scrambledArray[2], scrambledArray[3], scrambledArray[0], scrambledArray[1], scrambledArray[4]);
+//3) Combine elements back into a single string
 console.log("\t\t\t\t\t\t\t\t Rearrange Array \n\n");
 const result = rearrangedArray.join(" ");
 console.log(`"${result}"`);
 export {};
+// our task completed here
+//----------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------THE END -----------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------
+// this is not part of above question its just my practise  with destructure in simple its 2nd way to solve the above task. 
+// const scrambledArray = ["student", "of", true, 123, "am", "a", "GIAIC", "I"];
+//1) remove non string value which is not necessary here
+// scrambledArray.splice(2,2);
+// 2)Rearrange the array in desire order.
+//  2.1) its a mannual aproach to rearrange the array by using indices method
+// let rearrangedArray = [
+//   scrambledArray[5],scrambledArray[2],scrambledArray[3],
+//    scrambledArray[0],scrambledArray[1],scrambledArray[4]
+//      ]      
+// 2.2) i use destructure method here above method is also ok but for larger array its become deficult to work with indices        
+// let [firstWord, secondWord,thirdWord , fourthWord, fifthWord, sixthWord] = scrambledArray; 
+// let rearrangedArray = [sixthWord, thirdWord,fourthWord, firstWord, secondWord,  fifthWord];
+// 3) Combine elements back into a single string
+// console.log("\t\t\t\t\t\t\t\t Rearrange Array \n\n");
+// const result = rearrangedArray.join(" ");
+// console.log(`"${result}"`); 
