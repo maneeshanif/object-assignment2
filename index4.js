@@ -1,3 +1,27 @@
+/*Assignment 4: Student List Organizer
+----------------------------------------------------------------------------------------------------------------
+Learning Objective: Get comfortable with data structures (objects and arrays) and basic
+functions in TypeScript.
+Tasks:
+1. Student Data: The provided code defines an interface named Student that describes
+student information like name, senior status (true/false), and whether they've completed
+their assignments (true/false).
+o Imagine this as a template for organizing student details.
+2. Student List:
+o An array named students stores information about several students using the
+Student template. Think of this array as your class list!
+3. Find Senior Students with Assignments (Optional):
+o The code (not shown here) has a function that might find students who are seniors
+and have completed their assignments.
+o Can you guess why this information might be helpful?
+4. Class List Update:
+o Imagine you need to update your class list! The code (not shown here) might have
+a function that removes students who haven't completed their assignments
+(assuming only seniors are responsible).
+o Can you think of any reasons why this might be useful (consider limitations)?
+-----------------------------------------------------------------------------------------------------------------
+ */
+import chalk from "chalk";
 let students = [
     { name: "anees", senior: true, assignmentsCompleted: true },
     { name: "zaki", senior: false, assignmentsCompleted: false },
@@ -6,41 +30,43 @@ let students = [
     { name: "faik", senior: true, assignmentsCompleted: false },
 ];
 // Task 3: Find Senior Students with Assignments (Optional)
-function findSeniorStudentsWithAssignments(student) {
+function seniorStudsWithAssignments(student) {
     student.forEach((senArr) => {
         if (senArr.senior && senArr.assignmentsCompleted) {
-            console.log(`${senArr.name} keep shining champ`);
+            console.log(chalk.hex("33FFE6")(`${senArr.name.toUpperCase} keep shining champ`));
         }
         else if (senArr.senior && !senArr.assignmentsCompleted) {
-            console.log(` Hey ${senArr.name}, as a senior why your assignment isn't done? `);
+            console.log(chalk.hex("FFA533")(` Hey ${senArr.name}, as a senior why your assignment isn't done? `));
         }
     });
 }
 // Task 4: Class List Update
 function updateClassList(updstudents) {
-    //   updstudents.filter((std) => {
-    //     if (std.assignmentsCompleted === false) {
-    //       console.log(`Removing ${std.name} from the class list`);
-    //     } else if (std.assignmentsCompleted === true){
-    //         console.log(`Keeping ${std.name} in the class list`);
-    //     }
-    //   });
-    updstudents.forEach((std) => {
-        if (std.assignmentsCompleted) {
-            console.log(`Let ${std.name} stay in the class `);
+    updstudents.filter((std) => {
+        if (std.assignmentsCompleted && !std.senior) {
+            console.log(chalk.hex("93FF33")(` Congratulation!! ,${std.name} you are appointed as a senior  `));
         }
-        else {
-            console.log(`   ${std.name} has been removed `);
+        else if (!std.assignmentsCompleted && std.senior) {
+            console.log(chalk.redBright.underline(`Hey ${std.name} you are not a senior anymore  `));
         }
     });
 }
-console.log("\t\t\t\t\t\t Class Students\n");
+console.log(chalk.redBright.bgWhite.bold("\t\t\t\t\t\t Class Students\n"));
+console.log(chalk.cyanBright("----------------------------------------------------------------------------------------------------------------"));
 students.forEach((n) => {
-    console.log(n.name);
+    if (n.senior) {
+        console.log(chalk.greenBright.italic(`${n.name} is senior `));
+    }
+    else {
+        console.log(chalk.blueBright(`${n.name} is junior`));
+    }
 });
-console.log("\t\t\t\t\t\t Check Responsible Senior\n");
-findSeniorStudentsWithAssignments(students);
-console.log("--------------------------------------------\n");
-console.log("\t\t\t\t\t\t Updated Class List\n");
+console.log(chalk.cyanBright("----------------------------------------------------------------------------------------------------------------"));
+console.log(chalk.magentaBright.bold.bgHex('#faf0be')("\t\t\t\t\t\t Check Responsible Senior\n"));
+console.log(chalk.yellowBright("------------------------------------------------------------------------------------------------------------\n"));
+seniorStudsWithAssignments(students);
+console.log(chalk.yellowBright("------------------------------------------------------------------------------------------------------------\n"));
+console.log(chalk.blueBright.bgWhiteBright.bold("\t\t\t\t\t\t Updated Class List\n"));
 updateClassList(students);
-export {};
+console.log(chalk.grey("----------------------------------------------------------------------------------------------------------------------"));
+console.log(chalk.grey("--------------------------------------------------------------------------------------------------------------------\n"));

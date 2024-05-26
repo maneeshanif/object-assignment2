@@ -21,6 +21,7 @@ a function that removes students who haven't completed their assignments
 o Can you think of any reasons why this might be useful (consider limitations)?
 -----------------------------------------------------------------------------------------------------------------
  */
+import chalk from"chalk"
 interface Student {
   name: string;
   senior: boolean;
@@ -34,38 +35,44 @@ let students: Student[] = [
   { name: "faik", senior: true, assignmentsCompleted: false },
 ];
 // Task 3: Find Senior Students with Assignments (Optional)
-function findSeniorStudentsWithAssignments(student: Student[]) {
+function seniorStudsWithAssignments(student: Student[]) {
   student.forEach((senArr) => {
     if (senArr.senior && senArr.assignmentsCompleted) {
-      console.log(`${senArr.name} keep shining champ`);
+      console.log(chalk.hex("33FFE6")(`${senArr.name} keep shining champ`));
     } else if (senArr.senior && !senArr.assignmentsCompleted) {
-      console.log(` Hey ${senArr.name}, as a senior why your assignment isn't done? `);
+      console.log(chalk.hex("FFA533")
+        (` Hey ${senArr.name}, as a senior why your assignment isn't done? `)
+      );
     }
   });
 }
 // Task 4: Class List Update
 function updateClassList(updstudents: Student[]) {
-//   updstudents.filter((std) => {
-//     if (std.assignmentsCompleted === false) {
-//       console.log(`Removing ${std.name} from the class list`);
-//     } else if (std.assignmentsCompleted === true){
-//         console.log(`Keeping ${std.name} in the class list`);
-//     }
-//   });
-updstudents.forEach((std)=> {
-    if (std.assignmentsCompleted) {
-        console.log(`Let ${std.name} stay in the class `);
-    } else {
-        console.log(`   ${std.name} has been removed `);
+  updstudents.filter((std) => {
+    if (std.assignmentsCompleted && !std.senior) {
+      console.log(chalk.hex("93FF33")(` Congratulation!! ,${std.name} you are appointed as a senior  `));
+    } else if (!std.assignmentsCompleted && std.senior) {
+      console.log(chalk.redBright.underline(`Hey ${std.name} you are not a senior anymore  `));
     }
-})
+  });
 }
-console.log("\t\t\t\t\t\t Class Students\n")
-students.forEach((n) =>{
-    console.log(n.name);
-})
-console.log("\t\t\t\t\t\t Check Responsible Senior\n")
-findSeniorStudentsWithAssignments(students);
-console.log("--------------------------------------------\n");
-console.log("\t\t\t\t\t\t Updated Class List\n");
+console.log(chalk.redBright.bgWhite.bold("\t\t\t\t\t\t Class Students\n"));
+console.log(chalk.cyanBright("----------------------------------------------------------------------------------------------------------------"));
+
+students.forEach((n) => {
+  if (n.senior) {
+    console.log(chalk.greenBright.italic(`${n.name} is senior `));
+  } else {
+    console.log(chalk.blueBright(`${n.name} is junior`));
+  }
+});
+console.log(chalk.cyanBright("----------------------------------------------------------------------------------------------------------------"));
+
+console.log(chalk.magentaBright.bold.bgHex('#faf0be')("\t\t\t\t\t\t Check Responsible Senior\n"));
+console.log(chalk.yellowBright("------------------------------------------------------------------------------------------------------------\n"));
+seniorStudsWithAssignments(students);
+console.log(chalk.yellowBright("------------------------------------------------------------------------------------------------------------\n"));
+console.log(chalk.blueBright.bgWhiteBright.bold("\t\t\t\t\t\t Updated Class List\n"));
 updateClassList(students);
+console.log(chalk.grey("----------------------------------------------------------------------------------------------------------------------"));
+console.log(chalk.grey("--------------------------------------------------------------------------------------------------------------------\n"));
