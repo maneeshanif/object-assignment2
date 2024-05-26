@@ -10,6 +10,7 @@
  4. Output the entire people object to the console, displaying your information and your
  -------------------------------------------------------------------------------------------------------------------------------------
  friend list.*/
+ import chalk from "chalk"
  type Friend ={
     firstName:string,
     lastName:string,
@@ -35,6 +36,6 @@ let friend3:Friend ={      // number 3 friend obj
 }
 people.friends.push(friend1,friend2,friend3)
 
-console.log("\t\t\t\t\t\t\t\t Friend List \n\n");
+console.log(chalk.greenBright.bold.bgWhiteBright("\t\t\t\t\t\t\t\t Friend List \n\n"));
 
 console.log(people);

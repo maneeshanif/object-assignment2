@@ -16,6 +16,7 @@ create temporary arrays).
 • Use join() to combine elements back into a single string: "I am a student of GIAIC"
 -----------------------------------------------------------------------------------------------------------------------------
 */
+import chalk from "chalk";
 const scrambledArray = ["student", "of", true, 123, "am", "a", "GIAIC", "I"];
 //1) remove non string value which is not necessary here
 scrambledArray.splice(2, 2);
@@ -23,10 +24,9 @@ scrambledArray.splice(2, 2);
 let rearrangedArray = [];
 rearrangedArray.push(scrambledArray[5], scrambledArray[2], scrambledArray[3], scrambledArray[0], scrambledArray[1], scrambledArray[4]);
 //3) Combine elements back into a single string
-console.log("\t\t\t\t\t\t\t\t Rearrange Array \n\n");
+console.log(chalk.blueBright.bold.bgWhiteBright("\t\t\t\t\t\t\t\t Rearranged Array \n\n"));
 const result = rearrangedArray.join(" ");
-console.log(`"${result}"`);
-export {};
+console.log(chalk.hex("33FFE6")(`"${result}"`));
 // our task completed here
 //----------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------THE END -----------------------------------------------------------------------

@@ -33,10 +33,10 @@ let students = [
 function seniorStudsWithAssignments(student) {
     student.forEach((senArr) => {
         if (senArr.senior && senArr.assignmentsCompleted) {
-            console.log(chalk.hex("33FFE6")(`${senArr.name.toUpperCase} keep shining champ`));
+            console.log(chalk.hex("33FFE6")(`${senArr.name} keep shining champ👍`));
         }
         else if (senArr.senior && !senArr.assignmentsCompleted) {
-            console.log(chalk.hex("FFA533")(` Hey ${senArr.name}, as a senior why your assignment isn't done? `));
+            console.log(chalk.hex("FFA533")(` Hey ${senArr.name}, as a senior why your assignment isn't done? 😡 `));
         }
     });
 }
@@ -44,10 +44,10 @@ function seniorStudsWithAssignments(student) {
 function updateClassList(updstudents) {
     updstudents.filter((std) => {
         if (std.assignmentsCompleted && !std.senior) {
-            console.log(chalk.hex("93FF33")(` Congratulation!! ,${std.name} you are appointed as a senior  `));
+            console.log(chalk.hex("93FF33")(` Congratulation!! ${std.name} you are appointed as a senior 🎉🎉  `));
         }
         else if (!std.assignmentsCompleted && std.senior) {
-            console.log(chalk.redBright.underline(`Hey ${std.name} you are not a senior anymore  `));
+            console.log(chalk.redBright.underline(`Hey ${std.name} you are not a senior anymore 🧐 `));
         }
     });
 }
@@ -55,10 +55,10 @@ console.log(chalk.redBright.bgWhite.bold("\t\t\t\t\t\t Class Students\n"));
 console.log(chalk.cyanBright("----------------------------------------------------------------------------------------------------------------"));
 students.forEach((n) => {
     if (n.senior) {
-        console.log(chalk.greenBright.italic(`${n.name} is senior `));
+        console.log(chalk.greenBright.italic(`${n.name} is a senior  `));
     }
     else {
-        console.log(chalk.blueBright(`${n.name} is junior`));
+        console.log(chalk.blueBright(`${n.name} is a junior `));
     }
 });
 console.log(chalk.cyanBright("----------------------------------------------------------------------------------------------------------------"));
