@@ -22,6 +22,12 @@ o Can you think of any reasons why this might be useful (consider limitations)?
 -----------------------------------------------------------------------------------------------------------------
  */
 import chalk from"chalk"
+console.log(chalk.greenBright("\nDeveloped By:"));
+console.log(chalk.redBright.underline.italic("\tAnees Hanif"));
+console.log("\n");
+console.log(chalk.greenBright("----------------------------------------------------------------------------------------------------------------"));
+
+
 interface Student {
   name: string;
   senior: boolean;
